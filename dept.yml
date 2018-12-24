@@ -2,15 +2,13 @@ spring:
   profiles:
     active:
       -dev
----
+---              
 server:
   port: 8001
-
-                   
 spring:
   profiles: dev
   application:
-    name: springclouddeptServer
+    name: dept_server_provide
   
 mybatis:  # mapper映射
   config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
