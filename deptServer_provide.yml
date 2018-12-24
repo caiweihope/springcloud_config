@@ -1,0 +1,74 @@
+spring:
+  profiles:
+    active:
+      -dev
+---
+server:
+  port: 8001
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.yaorange.entry    # 所有Entity别名类所在包
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml                       # mapper映射
+spring:
+  profiles: dev
+  application:
+    name: springclouddeptServer
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    #当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/clouddb01
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    instance-id: microservice-dept8001
+    prefer-ip-address: true
+info:
+  app.name: yaorange-microservicecloud
+  company.name: www.qiangge.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+ ---
+ server:
+  port: 8001
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.yaorange.entry    # 所有Entity别名类所在包
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml                       # mapper映射
+spring:
+  profiles: test
+  application:
+    name: springclouddeptServer
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    #当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/clouddb01
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    instance-id: microservice-dept8001
+    prefer-ip-address: true
+info:
+  app.name: yaorange-microservicecloud
+  company.name: www.qiangge.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
